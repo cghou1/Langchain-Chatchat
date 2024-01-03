@@ -18,7 +18,9 @@ class RapidOCRLoader(UnstructuredFileLoader):
         from unstructured.partition.text import partition_text
         return partition_text(text=text, **self.unstructured_kwargs)
 
-
+# todo: 导入图片/pdf需要装一下opencv组件
+# yum update -y
+# yum install mesa-libGL glib2 -y
 if __name__ == "__main__":
     loader = RapidOCRLoader(file_path="../tests/samples/ocr_test.jpg")
     docs = loader.load()

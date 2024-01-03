@@ -81,7 +81,7 @@ if __name__ == "__main__":
         "--kb-name",
         type=str,
         nargs="+",
-        default=[],
+        default=['research_report'],
         help=("specify knowledge base names to operate on. default is all folders exist in KB_ROOT_PATH.")
     )
     parser.add_argument(

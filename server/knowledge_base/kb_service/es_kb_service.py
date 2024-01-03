@@ -36,12 +36,12 @@ class ESKBService(KBService):
         except Exception as e:
             logger.error(f"Error 发生 : {e}")
             raise e
-        try:
-            # 首先尝试通过es_client_python创建
-            self.es_client_python.indices.create(index=self.index_name)
-        except BadRequestError as e:
-            logger.error("创建索引失败,重新")
-            logger.error(e)
+        # try:            #不尝试创建，影响项目启动
+        #     # 首先尝试通过es_client_python创建
+        #     self.es_client_python.indices.create(index=self.index_name)
+        # except BadRequestError as e:
+        #     logger.error("创建索引失败,重新")
+        #     logger.error(e)
 
         try:
             # langchain ES 连接、创建索引
@@ -71,15 +71,15 @@ class ESKBService(KBService):
         except Exception as e:
             logger.error(f"Error 发生 : {e}")
             raise e
-        try:
-            # 尝试通过db_init创建索引
-            self.db_init._create_index_if_not_exists(
-                                                     index_name=self.index_name,
-                                                     dims_length=self.dims_length
-                                                     )
-        except Exception as e:
-            logger.error("创建索引失败...")
-            logger.error(e)
+        # try:
+        #     # 尝试通过db_init创建索引
+        #     self.db_init._create_index_if_not_exists(
+        #                                              index_name=self.index_name,
+        #                                              dims_length=self.dims_length
+        #                                              )
+        # except Exception as e:
+        #     logger.error("创建索引失败...")
+        #     logger.error(e)
             # raise e 
             
         
